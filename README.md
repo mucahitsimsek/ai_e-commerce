@@ -1,6 +1,6 @@
 # Flutter AI E-Commerce APP
 
-Öneri Sistemlerinin işleyişini Flutter kullanarak bir E-Ticaret uygulamsaında aktif şekilde kullanımından yola çıkarak bu projeye başlıyoruz. 
+Öneri Sistemlerinin işleyişini Flutter kullanarak bir E-Ticaret uygulamasında aktif şekilde kullanımından yola çıkarak bu projeye başlıyoruz. 
 Gerekli Bilgiler Çok Yakında Aktarılacaktır.
 
 ## Welcome
