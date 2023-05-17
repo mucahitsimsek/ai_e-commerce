@@ -1,16 +1,5 @@
-# ai_ecommerce
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#Hoş Geldiniz
+Öneri Sistemlerinin nasıl kullanılacağını öğrenmek için çıkmış olduğum bu yolda Flutter ile bir mobil uygulama geliştiriyorum. Hedefimiz kullanıcı verilerini elde ederek
+gerçek zamanlı bir uygulama geliştirmek.
+Aşama aşama neler yapılacağını burada paylaşacağım. 
+[Thor Geldi Hanım](https://media.giphy.com/media/3ov9k1J6jahVhiev0Q/giphy.gif)
