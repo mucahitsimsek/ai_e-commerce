@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "321730932459",
+    "project_id": "ai-e-commerce",
+    "storage_bucket": "ai-e-commerce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321730932459:android:6b2d7f177ffc1e49b658ae",
+        "android_client_info": {
+          "package_name": "com.mucahitsimsek.ai_ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321730932459-igeu7ug888gb2amehp7b8sbf7jlcqbp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIPPutnoNkGKAWl-paQd3WT7-jQylTGsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321730932459-igeu7ug888gb2amehp7b8sbf7jlcqbp7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
