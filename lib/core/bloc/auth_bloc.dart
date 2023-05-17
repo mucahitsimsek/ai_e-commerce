@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:ai_ecommerce/core/models/enums.dart';
 import 'package:ai_ecommerce/core/repository/auth_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -11,34 +12,6 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
-  // bool _signUpState = false;
-  // final _signUpStateController = StreamController<bool>.broadcast();
-
-  // Stream<bool> get signUpStateStream => _signUpStateController.stream;
-  // bool get signUpState => _signUpState;
-
-  // AuthBloc({required this.authRepository}) : super(UnAuthenticated()) {
-  //   on<SignUpRequested>((event, state) async {
-  //     emit(Loading());
-  //     try {
-  //       final result = await authRepository.signUp(
-  //         email: event.email,
-  //         password: event.password,
-  //       );
-  //       _signUpState = result;
-  //       _signUpStateController.add(_signUpState);
-
-  //       if (_signUpState) {
-  //         '$_signUpState deneme1'.log();
-  //       } else {
-  //         '$_signUpState deneme2'.log();
-  //       }
-  //     } catch (e) {
-  //       emit(UnAuthenticated());
-  //     }
-  //   });
-  // }
-
   AuthBloc({required this.authRepository}) : super(UnAuthenticated()) {
     on<SignUpRequested>((event, emit) async {
       emit(Loading());
@@ -54,6 +27,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         }
       } catch (e) {
         emit(SignUpFailure());
+      }
+    });
+
+    on<SignInRequested>((event, emit) async {
+      emit(Loading());
+      try {
+        final result = await authRepository.signIn(
+            email: event.email, password: event.password);
+        if (result == SignInState.emailNotVerified) {
+          emit(SignInFailure());
+        } else if (result == SignInState.signInSuccess) {
+          emit(SignInSuccess());
+        } else {
+          emit(SignInFailure());
+        }
+      } catch (e) {
+        emit(SignInFailure());
       }
     });
   }

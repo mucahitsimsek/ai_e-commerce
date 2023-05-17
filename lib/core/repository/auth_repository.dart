@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../view/login/login_screen.dart';
+import '../models/enums.dart';
 
 class AuthRepository {
   final _firebaseAuth = FirebaseAuth.instance;
@@ -36,14 +37,75 @@ class AuthRepository {
         return false;
       }
       if (kDebugMode) {
-        print('Kayıt sırasında bir hata oluştu: $e');
+        'Kayıt sırasında bir hata oluştu: $e'.log();
         return false;
       }
     }
     return true;
   }
 
-  Future<void> signIn({required String email, required String password}) async {
-    // try {} catch (e) {}
+  Future<SignInState> signIn(
+      {required String email, required String password}) async {
+    try {
+      final signInUser = await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      if (!signInUser.user!.emailVerified) {
+        try {
+          signInUser.user!.reload();
+          await signInUser.user!.sendEmailVerification();
+          return SignInState.emailNotVerified;
+        } catch (e) {
+          'Email Verification => $e'.log();
+        }
+      }
+      if (signInUser.user != null) {
+        Future.delayed(const Duration(seconds: 1)).whenComplete(() =>
+            Navigator.pushNamedAndRemoveUntil(
+                scaffoldKey.currentContext!, '/myHomeApp', (route) => false));
+        return SignInState.signInSuccess;
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        scaffoldKey.showSnackBar("User not found");
+        return SignInState.signInFail;
+      } else if (e.code == 'wrong-password') {
+        scaffoldKey.showSnackBar("Wrong Password");
+        return SignInState.signInFail;
+      } else if (e.code == 'too-many-requests') {
+        getResetPassword(email);
+        return SignInState.changePassword;
+      }
+      if (kDebugMode) {
+        'Giriş sırasında bir hata oluştu: $e'.log();
+        return SignInState.signInFail;
+      }
+    }
+    return SignInState.signInSuccess;
+  }
+
+  void getResetPassword(String email) {
+    showDialog(
+      context: scaffoldKey.currentContext!,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Şifreni mi Unuttun?"),
+          content: const Text("Şifre sıfırlama bağlantısı gönder!"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                _firebaseAuth.sendPasswordResetEmail(email: email);
+              },
+              child: const Text("Send"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Close"),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

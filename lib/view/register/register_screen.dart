@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,8 +15,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
   late AuthBloc _authBloc;
   final _formKey = GlobalKey<FormState>();
-  // bool _isLoading = false;
-  // StreamSubscription<bool>? _signUpStateSubscription;
 
   @override
   void initState() {
@@ -160,59 +157,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     ]);
   }
 }
-
-
-// _isLoading == false
-                //     ? ElevatedButton(
-                //         onPressed: () async {
-                //           if (_formKey.currentState!.validate()) {
-                //             _formKey.currentState!.save();
-                //             final email = _emailController.text;
-                //             final password = _passwordController.text;
-
-                //             _authBloc.add(SignUpRequested(
-                //               email,
-                //               password,
-                //             ));
-                //           }
-                //         },
-                //         child: const Text('Register'),
-                //       )
-                //     : const CircularProgressIndicator(),
-
-                // _signUpStateSubscription = _authBloc.signUpStateStream.listen((state) {
-    //   if (state) {
-    //     '$state true ise'.log();
-    //     setState(() {
-    //       _isLoading = true;
-    //     });
-    //   } else {
-    //     '$state false ise'.log();
-    //     setState(() {
-    //       _isLoading = false;
-    //     });
-    //   }
-    // });
-
-
-    // BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-    //                 if(state is Loading){
-    //                   return const CircularProgressIndicator();
-    //                 } else {
-    //                   return ElevatedButton(
-    //                       onPressed: () async {
-    //                         if (_formKey.currentState!.validate()) {
-    //                           _formKey.currentState!.save();
-    //                           final email = _emailController.text;
-    //                           final password = _passwordController.text;
-
-    //                           _authBloc.add(SignUpRequested(
-    //                             email,
-    //                             password,
-    //                           ));
-    //                         }
-    //                       },
-    //                       child: const Text('Register'),
-    //                     );
-    //                 }
-    //               },),
