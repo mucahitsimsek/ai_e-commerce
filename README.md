@@ -1,16 +1,24 @@
-# ai_ecommerce
+# Flutter AI E-Commerce APP
 
-A new Flutter project.
+Öneri Sistemlerinin işleyişini Flutter kullanarak bir E-Ticaret uygulamasında aktif şekilde kullanımından yola çıkarak bu projeye başlıyoruz. 
+Gerekli Bilgiler Çok Yakında Aktarılacaktır.
 
-## Getting Started
+## Welcome
 
-This project is a starting point for a Flutter application.
+![](https://cdn.kayiprihtim.com/wp-content/uploads/2019/09/Avengers-Endgame-thor-ust.jpg)
 
-A few resources to get you started if this is your first Flutter project:
+## Kurulum
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Kullanım
+
+
+
+## Katkıda Bulunma
+
+
+
+## Lisans
+
+
