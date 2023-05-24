@@ -1,7 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
-
-import '../models/enums.dart';
 
 extension SnackbarExtension on GlobalKey<ScaffoldState> {
   void showSnackBar(String message) {
@@ -22,17 +21,36 @@ extension LogExtension on String {
   }
 }
 
-extension SignInStateExtension on SignInState {
-  String get message {
-    switch (this) {
-      case SignInState.emailNotVerified:
-        return "Please verify your email.";
-      case SignInState.signInFail:
-        return "Sign in failed.";
-      case SignInState.signInSuccess:
-        return "Sign in successful.";
-      default:
-        return "";
-    }
+extension NavigationExtension on NavigatorState {
+  Future<T?> pushPageRoute<T extends Object?>(WidgetBuilder builder,
+      {bool maintainState = true, bool withNavBar = false}) {
+    return Navigator.of(context, rootNavigator: !withNavBar).push(
+      CupertinoPageRoute<T>(
+        builder: builder,
+        maintainState: !maintainState,
+      ),
+    );
   }
 }
+
+extension NavigationPushAndRemoveUntil on NavigatorState {
+  Future<T?> pushRemoveUntil<T extends Object?>(Widget screen) {
+    return Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+        CupertinoPageRoute(builder: (context) => screen), (route) => false);
+  }
+}
+
+
+//AŞAĞIDAKİ KODU AKTİFLEŞTİREBİLMEK İÇİN ROUTE LİSTESİ OLUŞTURMAN GEREKİYOR GİBİ
+
+
+// extension NavigationExtension2 on NavigatorState {
+//   Future<T?> pushAndRemovePages<T extends Object?>({
+//     bool maintainState = true,
+//     bool withNavBar = false,
+//     String route = "/unhandledroute",
+//   }) {
+//     return Navigator.of(context, rootNavigator: !withNavBar)
+//         .pushNamedAndRemoveUntil(route, (route) => false);
+//   }
+// }
